@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import Movies from './components/movies';
 import './App.css';
 
 class App extends Component {
+  state = {
+
+  };
+
   render() {
     return (
-      <main role="main" className="container">
-        <h1>Hello World</h1>
-      </main>
+      <Movies />
     );
   }
 }
