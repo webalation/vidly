@@ -8,13 +8,17 @@ class Movies extends PureComponent {
     };
 
     handleDelete = movie => {
-        
+        const movies = [...this.state.movies]
+        movies.splice(movie, 1);
+        this.setState({
+            movies: movies
+        });
     };
 
     render() { 
         return (  
             <main role="main" className="container">
-                <table class="table">
+                <table className="table">
                 <thead>
                     <tr>
                     <th scope="col">Title</th>
@@ -27,12 +31,12 @@ class Movies extends PureComponent {
                 <tbody>
                     {
                         this.state.movies.map(movie => {
-                            return <tr className={styles.Movies}>
+                            return <tr key={movie._id} className={styles.Movies}>
                                 <th scope="row">{movie.title}</th>
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
-                                <td><button className="btn btn-secondary btn-sm">Delete</button></td>
+                                <td><button onClick={this.handleDelete} className="btn btn-secondary btn-sm">Delete</button></td>
                             </tr>
                         })
                     }
