@@ -1,0 +1,9 @@
+.Movies button {
+    background-color: #cb0000;
+    border-color: #cb0000;
+}
+
+.Movies button:hover {
+    background-color: #8B0000;
+    border-color: #8B0000;
+}

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { getMovies } from '../services/fakeMovieService';
+import styles from './movies.module.css';
 
 class Movies extends PureComponent {
     state = { 
@@ -26,7 +27,7 @@ class Movies extends PureComponent {
                 <tbody>
                     {
                         this.state.movies.map(movie => {
-                            return <tr>
+                            return <tr className={styles.Movies}>
                                 <th scope="row">{movie.title}</th>
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
