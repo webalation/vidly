@@ -3,13 +3,11 @@ import Movies from './components/movies';
 import './App.css';
 
 class App extends Component {
-  state = {
-
-  };
-
   render() {
     return (
-      <Movies />
+      <main role="main" className="container">
+        <Movies />
+      </main>
     );
   }
 }

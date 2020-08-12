@@ -1,24 +1,23 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
 import styles from './movies.module.css';
 
-class Movies extends PureComponent {
+class Movies extends Component {
     state = { 
         movies: getMovies()
     };
 
     handleDelete = movie => {
-        const movies = [...this.state.movies]
-        movies.splice(movie, 1);
+        const movies = this.state.movies.filter(m => m._id !== movie._id);
         this.setState({
             movies: movies
         });
+        console.log(movie);
     };
 
     render() { 
         return (  
-            <main role="main" className="container">
-                <table className="table">
+            <table className="table">
                 <thead>
                     <tr>
                     <th scope="col">Title</th>
@@ -36,13 +35,12 @@ class Movies extends PureComponent {
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
-                                <td><button onClick={this.handleDelete} className="btn btn-secondary btn-sm">Delete</button></td>
+                                <td><button onClick={() => this.handleDelete(movie)} className="btn btn-secondary btn-sm">Delete</button></td>
                             </tr>
                         })
                     }
                 </tbody>
-                </table>
-            </main>
+            </table>
         );
     }
 }
