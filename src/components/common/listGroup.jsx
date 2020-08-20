@@ -5,7 +5,11 @@ const ListGroup = props => {
 
     return (
         <ul class="list-group">
-            {items.map(item => <li key={item[valueProperty]} class="list-group-item">{item[textProperty]}</li>)}
+            {items.map(item => (
+                <li key={item[valueProperty]} class="list-group-item">
+                    {item[textProperty]}
+                </li>
+            ))}
         </ul>
     );
 }
