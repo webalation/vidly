@@ -11,6 +11,7 @@ import MovieForm from "./components/movieForm";
 import LoginForm from "./components/loginForm";
 import Register from "./components/register";
 import Logout from "./components/logout";
+import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -18,11 +19,8 @@ class App extends Component {
   state = {};
 
   componentDidMount() {
-    try {
-      const jwt = localStorage.getItem("token");
-      const user = jwtDecode(jwt);
-      this.setState({ user: user });
-    } catch (error) {}
+    const user = auth.getCurrentUser();
+    this.setState({ user: user });
   }
 
   render() {
